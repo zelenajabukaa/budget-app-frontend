@@ -1,0 +1,13 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { DatePicker } from 'antd'
+
+function App() {
+  return (
+    <DatePicker></DatePicker>
+  )
+}
+
+export default App
