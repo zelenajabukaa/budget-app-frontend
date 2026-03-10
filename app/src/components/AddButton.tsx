@@ -1,8 +1,20 @@
 import { PlusCircleOutlined } from "@ant-design/icons"
 
-function AddButton() {
+type AddButtonProps = {
+    onClick: () => void
+}
+
+function AddButton({ onClick }: AddButtonProps) {
     return (
-        <PlusCircleOutlined style={{ position: 'absolute', bottom: '4rem', right: '2rem' }} />
+        <PlusCircleOutlined spin={true}
+            style={{
+                position: 'absolute',
+                bottom: '4rem',
+                right: '3rem',
+                fontSize: '3rem',
+                cursor: 'pointer'
+            }}
+            onClick={onClick} />
     )
 }
 
