@@ -1,0 +1,13 @@
+.icon {
+    position: absolute;
+    bottom: 4rem;
+    right: 3rem;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: ease 0.5s
+}
+
+.icon:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
