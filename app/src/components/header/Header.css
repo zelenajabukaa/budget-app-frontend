@@ -51,6 +51,7 @@
 .dropdown li a {
   color: white;
   text-decoration: none;
+  /* um die punkte wegzumachen*/
 }
 
 .dropdown li a:hover {
