@@ -1,5 +1,5 @@
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { Card, Typography } from "antd";
+import { Card } from "antd";
 
 type NoEntriesProps = {
     message: string;
