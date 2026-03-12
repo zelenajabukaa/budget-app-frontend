@@ -1,4 +1,8 @@
+.action-buttons{
+    transition: ease-in-out .2s;
+}
+
 .action-buttons.open .action-button {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1.3);
 }
