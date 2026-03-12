@@ -1,10 +1,12 @@
 import AddEarningForm from "../components/forms/AddEarningForm.tsx";
+import Header from "../components/header/Header.tsx";
 
 
 function AddEarningPage(){
     return (
         <div>
-            <AddEarningForm/>
+            <Header/>
+            <AddEarningForm style={{marginTop: '2rem'}}/>
         </div>
     )
 }
