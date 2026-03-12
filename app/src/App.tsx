@@ -1,33 +1,15 @@
-import {useState} from 'react';
-import AddButton from './components/buttons/AddButton';
-import Header from './components/header/Header';
-import NoEntries from './components/notifications/NoEntries';
-import {Button} from 'antd';
+import {Route, Routes } from "react-router-dom"
 import './App.css'
+import HomePage from "./pages/HomePage.tsx";
+import AddEarningPage from "./pages/AddEarningPage.tsx";
 
 function App() {
-    const [isPopupOpen, setIsPopupOpen] = useState(false)
-
-
-    return (
-        <>
-            <Header/>
-            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
-
-            <NoEntries message='Einnahmen'/>
-            <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
-                <Button
-                    className='action-button'
-                    style={{bottom: '8rem'}}>Einnahmen Erfassen
-                </Button>
-
-                <Button
-                    className='action-button'
-                    style={{bottom: '14rem'}}>Ausgaben Erfassen
-                </Button>
-            </div>
-        </>
-    );
+    return(
+        <Routes>
+            <Route path='/' element={<HomePage/>}/>
+            <Route path='/add-earning' element={<AddEarningPage/>}/>
+        </Routes>
+    )
 }
 
 export default App

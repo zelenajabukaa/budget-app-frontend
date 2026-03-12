@@ -3,6 +3,7 @@ import {addEarning, type Earning} from "../../reduxStore/earningsSlice.ts";
 import {useDispatch} from "react-redux";
 import type {AppDispatch} from "recharts/types/state/store";
 import './AddEarningForm.css'
+import {useNavigate} from "react-router-dom";
 
 type FormValues = {
     description: string;
@@ -14,6 +15,7 @@ function AddEarningForm() {
 
     const dispatch: AppDispatch = useDispatch();
     const [form] = Form.useForm<FormValues>()
+    const navigate = useNavigate()
 
     const onSubmit = (values: FormValues) => {
 
@@ -24,8 +26,9 @@ function AddEarningForm() {
         }
 
         dispatch(addEarning(newEarning))
-
         form.resetFields()
+
+        navigate('/')
     }
 
     const categoryOptions = [
