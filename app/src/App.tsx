@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import AddButton from './components/buttons/AddButton';
 import Header from './components/header/Header';
 import NoEntries from './components/notifications/NoEntries';
-import { Button } from 'antd';
+import {Button} from 'antd';
 import './App.css'
 
 function App() {
@@ -11,34 +11,21 @@ function App() {
 
     return (
         <>
-            <Header />
-            <AddButton onClick={() => setIsPopupOpen(!isPopupOpen)} />
+            <Header/>
+            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
 
-            <NoEntries message='Einnahmen' />
+            <NoEntries message='Einnahmen'/>
+            <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
+                <Button
+                    className='action-button'
+                    style={{bottom: '8rem'}}>Einnahmen Erfassen
+                </Button>
 
-            {!isPopupOpen && (
-                <div className={`actionButtons ${isPopupOpen ? 'open' : ''}`}>
-                    <Button
-                        className='action-button'
-                        style={{
-                            padding: '2rem',
-                            minWidth: '12rem',
-                            position: 'absolute',
-                            bottom: '8rem',
-                            right: '6rem'
-                        }}>Einnahmen Erfassen</Button>
-
-                    <Button
-                        className='action-button'
-                        style={{
-                            padding: '2rem',
-                            minWidth: '12rem',
-                            position: 'absolute',
-                            bottom: '14rem',
-                            right: '6rem'
-                        }}>Ausgaben Erfassen</Button>
-                </div>
-            )}
+                <Button
+                    className='action-button'
+                    style={{bottom: '14rem'}}>Ausgaben Erfassen
+                </Button>
+            </div>
         </>
     );
 }
