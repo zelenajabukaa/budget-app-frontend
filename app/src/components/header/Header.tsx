@@ -1,7 +1,11 @@
 import './Header.css'
 import { useState } from 'react';
 
-function Header() {
+type HeaderProps = {
+    title?: string
+}
+
+function Header({title}: HeaderProps) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -11,7 +15,7 @@ function Header() {
     return (
         <>
             <header className="header">
-                <h1 className="title">Budget App</h1>
+                <h1 className="title">{title ? title : 'Budget App'}</h1>
                 <div className="burgerMenu" onClick={toggleMenu}>
                     <div className="line"></div>
                     <div className="line"></div>
