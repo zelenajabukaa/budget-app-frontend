@@ -1,15 +1,15 @@
-import {Button, Card, List, Tooltip, Typography} from "antd";
-import {useNavigate} from 'react-router-dom';
+import { Button, Card, List, Tooltip, Typography } from "antd";
+import { useNavigate } from 'react-router-dom';
 import NoEntries from "../components/notifications/NoEntries.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
-import {useState} from "react";
+import { useMemo, useState } from "react";
 import Header from "../components/header/Header.tsx";
-import type {RootState} from "../reduxStore/store.ts";
-import {useSelector} from "react-redux";
-import type {Earning} from "../reduxStore/earningsSlice.ts";
-import {Legend, Pie, PieChart} from "recharts";
+import type { RootState } from "../reduxStore/store.ts";
+import { useSelector } from "react-redux";
+import type { Earning } from "../reduxStore/earningsSlice.ts";
+import { Legend, Pie, PieChart } from "recharts";
 
-const {Title} = Typography;
+const { Title } = Typography;
 
 function EarningPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -19,34 +19,37 @@ function EarningPage() {
         navigate('/add-earning')
     }
 
-    const earningsList = useSelector((state: RootState) => state.earnings.list);
-
-    type PieData = {
-        name: string
-        value: number
-        fill: string
+    const categoryColors = {
+        'Gehalt': '#0088FE',
+        'Geschenk': '#00C49F',
+        'Verkauf': '#FFBB28',
+        'Sonstiges': '#FF8042',
     }
 
-    const data: PieData[] = [
-        { name: 'Gruppe dsfA', value: 400, fill: '#0088FE' },
-        { name: 'Gruppe B', value: 300, fill: '#00C49F' },
-        { name: 'Gruppe C', value: 300, fill: '#FFBB28' },
-        { name: 'Gruppe D', value: 200, fill: '#FF8042' },
-    ];
+    const earningsList = useSelector((state: RootState) => state.earnings.list);
+
+    const data = useMemo(() => {
+        return earningsList.map((item: Earning) => ({
+            category: item.category,
+            value: item.amount,
+            fill: categoryColors[item.category]
+        }))
+    }, [earningsList])
+
 
     return (
         <>
-            <Header/>
-            <Title style={{justifySelf: 'center', color: 'white'}}>Einnahmen</Title>
+            <Header />
+            <Title style={{ justifySelf: 'center', color: 'white' }}>Einnahmen</Title>
             {earningsList.length === 0 ? (
-                <NoEntries message='Einnahmen'/>
+                <NoEntries message='Einnahmen' />
             ) : (
                 <>
                     <PieChart width={600} height={400}>
                         <Pie
                             data={data}
                             dataKey="value"
-                            nameKey="name"
+                            nameKey="category"
                             cx="50%"
                             cy="50%"
                             outerRadius={150}
@@ -60,7 +63,7 @@ function EarningPage() {
                         dataSource={earningsList}
                         renderItem={(item: Earning) => (
                             <List.Item>
-                                <Card style={{width: 600, margin: '0.5rem auto'}}>
+                                <Card style={{ width: 600, margin: '0.5rem auto' }}>
                                     <div style={{
                                         fontSize: '1.2rem',
                                         fontWeight: 'bold',
@@ -68,7 +71,7 @@ function EarningPage() {
                                         justifyContent: 'space-between'
                                     }}>
                                         {item.category}
-                                        <div style={{color: '#52c41a'}}>
+                                        <div style={{ color: '#52c41a' }}>
                                             + {item.amount.toFixed(2)} CHF
                                         </div>
                                     </div>
@@ -79,12 +82,12 @@ function EarningPage() {
                 </>
 
             )}
-            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
+            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)} />
 
             <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
                 <Button
                     className='action-button'
-                    style={{bottom: '8rem'}}
+                    style={{ bottom: '8rem' }}
                     onClick={openAddEarningForms}
                 >
                     Einnahmen Erfassen
@@ -92,7 +95,7 @@ function EarningPage() {
 
                 <Button
                     className='action-button'
-                    style={{bottom: '14rem'}}
+                    style={{ bottom: '14rem' }}
                 >
                     Ausgaben Erfassen
                 </Button>
