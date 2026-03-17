@@ -1,4 +1,4 @@
-import { Button, Card, List, Tooltip, Typography } from "antd";
+import { Button, Card, List, Typography } from "antd";
 import { useNavigate } from 'react-router-dom';
 import NoEntries from "../components/notifications/NoEntries.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
@@ -7,9 +7,9 @@ import Header from "../components/header/Header.tsx";
 import type { RootState } from "../reduxStore/store.ts";
 import { useSelector } from "react-redux";
 import type { Earning } from "../reduxStore/earningsSlice.ts";
-import { Legend, Pie, PieChart } from "recharts";
+import { Legend, Pie, PieChart, Tooltip } from "recharts";
 
-const { Title } = Typography;
+const { Title } = Typography
 
 function EarningPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -19,20 +19,26 @@ function EarningPage() {
         navigate('/add-earning')
     }
 
-    const categoryColors = {
+    const categoryColors: Record<string, string> = {
         'Gehalt': '#0088FE',
         'Geschenk': '#00C49F',
         'Verkauf': '#FFBB28',
         'Sonstiges': '#FF8042',
     }
 
-    const earningsList = useSelector((state: RootState) => state.earnings.list);
+    const earningsList = useSelector((state: RootState) => state.earnings.list)
 
     const data = useMemo(() => {
-        return earningsList.map((item: Earning) => ({
-            category: item.category,
-            value: item.amount,
-            fill: categoryColors[item.category]
+        const grouped: Record<string, number> = {}
+
+        earningsList.forEach((item: Earning) => {
+            grouped[item.category] = (grouped[item.category] || 0) + item.amount
+        })
+
+        return Object.entries(grouped).map(([category, value]) => ({
+            category: category,
+            value,
+            fill: categoryColors[category],
         }))
     }, [earningsList])
 
@@ -45,7 +51,7 @@ function EarningPage() {
                 <NoEntries message='Einnahmen' />
             ) : (
                 <>
-                    <PieChart width={600} height={400}>
+                    <PieChart width={600} height={400} style={{ justifySelf: 'center' }}>
                         <Pie
                             data={data}
                             dataKey="value"
