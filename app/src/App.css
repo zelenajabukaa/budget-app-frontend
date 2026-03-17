@@ -7,10 +7,10 @@
 .action-button {
     padding: 2rem;
     min-width: 12rem;
-    position: absolute;
+    position: fixed;
     right: 6rem;
     opacity: 0;
-    transform: translateY(30px) translateX(30px) scale(0.8);
+    transform: translateY(10px) translateX(30px) scale(0.8);
     /* das heisst einfach es ist nach unten verschoben und kleiner wo die animation noch nicht geladet ist */
     pointer-events: none;
     /* die buttons können nicht geklickt werden wenn sie unsichtbar sind */
