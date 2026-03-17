@@ -69,7 +69,7 @@ function EarningPage() {
                         dataSource={earningsList}
                         renderItem={(item: Earning) => (
                             <List.Item>
-                                <Card style={{ width: 600, margin: '0.5rem auto' }}>
+                                <Card style={{ width: 600, margin: '0.5rem auto', color: categoryColors[item.category] }}>
                                     <div style={{
                                         fontSize: '1.2rem',
                                         fontWeight: 'bold',
