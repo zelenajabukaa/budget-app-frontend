@@ -1,14 +1,14 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit'
 
 export type Earning = {
-    description: string;
-    amount: number;
-    category: 'Gehalt' | 'Geschenk' | 'Verkauf' | 'Sonstiges';
+    description: string
+    amount: number
+    category: 'Gehalt' | 'Geschenk' | 'Verkauf' | 'Sonstiges'
 }
 
 type EarningsState = {
-    list: Earning[];
-    isLoading: boolean;
+    list: Earning[]
+    isLoading: boolean
 }
 
 const initialState: EarningsState = {
