@@ -1,6 +1,10 @@
 import ActionButton from "./ActionButton.tsx";
+import { useNavigate } from "react-router-dom";
 
 function TransactionButtons() {
+
+    const navigate = useNavigate();
+
     const openAddEarningForms = () => {
         navigate('/add-earning')
     }

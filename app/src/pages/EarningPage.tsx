@@ -1,5 +1,4 @@
 import { List, Typography } from "antd";
-import { useNavigate } from 'react-router-dom';
 import NoEntries from "../components/notifications/NoEntries.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
 import { useMemo, useState } from "react";

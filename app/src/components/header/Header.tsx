@@ -26,8 +26,8 @@ function Header({title}: HeaderProps) {
                 <nav className="dropdown">
                     <ul>
                         <li><a href="/#">Home</a></li>
-                        <li><a href="einnahmen">Einnahmen</a></li>
-                        <li><a href="ausgaben">Ausgaben</a></li>
+                        <li><a href="earnings">Einnahmen</a></li>
+                        <li><a href="expenses">Ausgaben</a></li>
                     </ul>
                 </nav>
             )}
