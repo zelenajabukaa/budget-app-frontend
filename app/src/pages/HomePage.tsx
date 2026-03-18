@@ -13,10 +13,6 @@ function HomePage() {
 
     const [isPopupOpen, setIsPopupOpen] = useState(false)
 
-    const onChange = (key: string) => {
-        console.log(key);
-    };
-
     const items: TabsProps['items'] = [
         {
             key: '1',
@@ -44,7 +40,7 @@ function HomePage() {
             <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
             <Title style={{ justifySelf: 'center', color: 'white' }}>Home</Title>
             <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>
-                <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} onChange={onChange} type={'card'} tabPlacement={'top'}/>
+                <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} type={'card'} tabPlacement={'top'}/>
             </ConfigProvider>
             <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
                 <TransactionButtons/>
