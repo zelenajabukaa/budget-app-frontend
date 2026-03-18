@@ -10,7 +10,7 @@ function TransactionButtons() {
     }
 
     const openAddExpenseForms = () => {
-        navigate('/add-earning')
+        navigate('/add-expense')
     }
 
     return (

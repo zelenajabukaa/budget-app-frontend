@@ -1,7 +1,7 @@
 import {Button} from "antd";
 
 type ActionButtonProps = {
-    onClick: ()=>{}
+    onClick: ()=>void
     text: string
     bottom: string
 }
