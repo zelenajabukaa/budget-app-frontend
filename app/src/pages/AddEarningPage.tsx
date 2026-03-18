@@ -6,7 +6,7 @@ function AddEarningPage(){
     return (
         <div>
             <Header/>
-            <AddEarningForm style={{marginTop: '2rem'}}/>
+            <AddEarningForm/>
         </div>
     )
 }

@@ -1,10 +1,9 @@
-import {Button, Card, Form, Input, InputNumber, Select, Space} from "antd";
+import {Form} from "antd";
 import {addEarning, type Earning} from "../../reduxStore/earningsSlice.ts";
 import {useDispatch} from "react-redux";
 import type {AppDispatch} from "recharts/types/state/store";
-import './AddEarningForm.css'
 import {useNavigate} from "react-router-dom";
-import * as React from "react";
+import CustomForm from "./CustomForm.tsx";
 
 type FormValues = {
     description: string;
@@ -12,11 +11,7 @@ type FormValues = {
     category: Earning['category'];
 }
 
-type AddEarningFormProps = {
-    style?: React.CSSProperties;
-}
-
-function AddEarningForm({style}: AddEarningFormProps) {
+function AddEarningForm() {
 
     const dispatch: AppDispatch = useDispatch();
     const [form] = Form.useForm<FormValues>()
@@ -44,46 +39,7 @@ function AddEarningForm({style}: AddEarningFormProps) {
     ];
 
     return (
-        <Card className={'main-card'} style={style}>
-            <Form
-                form={form}
-                layout="vertical"
-                onFinish={onSubmit}
-                initialValues={{amount: 0, description: '', category: undefined}}
-            >
-                <Form.Item
-                    label="Betrag"
-                    name="amount"
-                    rules={[{required: true, message: 'Bitte einen Betrag eingeben!'}]}
-                >
-                    <InputNumber style={{width: '100%'}} min={0}/>
-                </Form.Item>
-                <Form.Item
-                    label="Kategorie"
-                    name="category"
-                    rules={[{required: true, message: 'Bitte eine Kategorie auswählen!'}]}
-                >
-                    <Select options={categoryOptions}/>
-                </Form.Item>
-                <Form.Item
-                    label="Beschreibung"
-                    name="description"
-                    rules={[{required: true, message: 'Bitte eine Beschreibung eingeben!'}]}
-                >
-                    <Input/>
-                </Form.Item>
-                <Form.Item style={{justifyItems:'right'}}>
-                    <Space>
-                        <Button onClick={() => navigate('/earnings')}>
-                            Abbrechen
-                        </Button>
-                        <Button type="primary" htmlType="submit">
-                            Speichern
-                        </Button>
-                    </Space>
-                </Form.Item>
-            </Form>
-        </Card>
+        <CustomForm form={form} onSubmit={onSubmit} categoryOptions={categoryOptions} navigateTo={'/earnings'}/>
     )
 }
 
