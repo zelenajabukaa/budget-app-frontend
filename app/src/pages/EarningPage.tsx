@@ -1,4 +1,4 @@
-import { Button, List, Typography } from "antd";
+import { List, Typography } from "antd";
 import { useNavigate } from 'react-router-dom';
 import NoEntries from "../components/notifications/NoEntries.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
@@ -17,7 +17,6 @@ const { Title } = Typography
 
 function EarningPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
-    const navigate = useNavigate()
 
     const earningsList = useSelector((state: RootState) => state.earnings.list)
 
