@@ -25,3 +25,11 @@
 .action-buttons.open .action-button:nth-of-type(2) {
     transition-delay: 0.1s;
 }
+
+/* entfernt die outline von dem ausgewählten kuchenstück */
+.no-outline:focus,
+.no-outline .recharts-sector:focus,
+.no-outline .recharts-surface:focus,
+.no-outline .recharts-legend-item:focus {
+    outline: none;
+}

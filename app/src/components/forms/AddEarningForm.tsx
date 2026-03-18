@@ -33,7 +33,7 @@ function AddEarningForm({style}: AddEarningFormProps) {
         dispatch(addEarning(newEarning))
         form.resetFields()
 
-        navigate('/')
+        navigate('/earnings')
     }
 
     const categoryOptions = [
@@ -74,7 +74,7 @@ function AddEarningForm({style}: AddEarningFormProps) {
                 </Form.Item>
                 <Form.Item style={{justifyItems:'right'}}>
                     <Space>
-                        <Button onClick={() => navigate('/')}>
+                        <Button onClick={() => navigate('/earnings')}>
                             Abbrechen
                         </Button>
                         <Button type="primary" htmlType="submit">

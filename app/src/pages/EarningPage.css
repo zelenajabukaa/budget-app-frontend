@@ -1,7 +1,0 @@
-/* entfernt die outline von dem ausgewählten kuchenstück */
-.no-outline:focus,
-.no-outline .recharts-sector:focus,
-.no-outline .recharts-surface:focus,
-.no-outline .recharts-legend-item:focus {
-    outline: none;
-}

@@ -4,7 +4,7 @@ import type {Earning} from "../../reduxStore/earningsSlice.ts";
 import { categoryColors } from '../../categoryColors.ts';
 
 type TransactionCardProps = {
-    type: 'epxense' | 'earning'
+    type: 'expense' | 'earning'
     item:  Earning | Expense
 }
 

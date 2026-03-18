@@ -5,23 +5,23 @@ import { useMemo, useState } from "react";
 import Header from "../components/header/Header.tsx";
 import type { RootState } from "../reduxStore/store.ts";
 import { useSelector } from "react-redux";
-import type { Earning } from "../reduxStore/earningsSlice.ts";
 import { Legend, Pie, PieChart, Tooltip } from "recharts";
 import TransactionCard from "../components/cards/TransactionCard.tsx";
 import { categoryColors } from '../categoryColors.ts';
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
+import type {Expense} from "../reduxStore/expensesSlice.ts";
 
 const { Title } = Typography
 
-function EarningPage() {
+function ExpensesPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
 
-    const earningsList = useSelector((state: RootState) => state.earnings.list)
+    const expensesList = useSelector((state: RootState) => state.expenses.list)
 
     const data = useMemo(() => {
         const grouped: Record<string, number> = {}
 
-        earningsList.forEach((item: Earning) => {
+        expensesList.forEach((item: Expense) => {
             grouped[item.category] = (grouped[item.category] || 0) + item.amount
         })
 
@@ -30,15 +30,15 @@ function EarningPage() {
             value,
             fill: categoryColors[category],
         }))
-    }, [earningsList])
+    }, [expensesList])
 
 
     return (
         <>
             <Header />
-            <Title style={{ justifySelf: 'center', color: 'white' }}>Einnahmen</Title>
-            {earningsList.length === 0 ? (
-                <NoEntries message='Einnahmen' />
+            <Title style={{ justifySelf: 'center', color: 'white' }}>Ausgaben</Title>
+            {expensesList.length === 0 ? (
+                <NoEntries message='Ausgaben' />
             ) : (
                 <>
                     <PieChart width={600} height={400} className="no-outline" style={{ justifySelf: 'center' }}>
@@ -57,10 +57,10 @@ function EarningPage() {
                     </PieChart>
                     <List
                         itemLayout="horizontal"
-                        dataSource={earningsList}
-                        renderItem={(item: Earning) => (
+                        dataSource={expensesList}
+                        renderItem={(item: Expense) => (
                             <List.Item>
-                                <TransactionCard type={'earning'} item={item}/>
+                                <TransactionCard type={'expense'} item={item}/>
                             </List.Item>
                         )}
                     />
@@ -76,4 +76,4 @@ function EarningPage() {
     )
 }
 
-export default EarningPage
+export default ExpensesPage

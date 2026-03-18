@@ -1,16 +1,16 @@
 import './Header.css'
-import { useState } from 'react';
+import { useState } from 'react'
 
 type HeaderProps = {
     title?: string
 }
 
 function Header({title}: HeaderProps) {
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false)
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
+        setMenuOpen(!menuOpen)
+    }
 
     return (
         <>
@@ -32,7 +32,7 @@ function Header({title}: HeaderProps) {
                 </nav>
             )}
         </>
-    );
+    )
 }
 
 export default Header
