@@ -13,8 +13,7 @@ import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
 
 const { Title } = Typography
 
-function EarningPage() {
-    const [isPopupOpen, setIsPopupOpen] = useState(false)
+export function EarningPieChart(){
 
     const earningsList = useSelector((state: RootState) => state.earnings.list)
 
@@ -32,6 +31,28 @@ function EarningPage() {
         }))
     }, [earningsList])
 
+    return(
+        <PieChart width={600} height={400} className="no-outline" style={{ justifySelf: 'center' }}>
+            <Pie
+                data={data}
+                dataKey="value"
+                nameKey="category"
+                cx="50%"
+                cy="50%"
+                outerRadius={150}
+                label={(entry) => entry.name}
+                stroke={'none'}
+            />
+            <Tooltip />
+            <Legend />
+        </PieChart>
+    )
+}
+
+function EarningPage() {
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+    const earningsList = useSelector((state: RootState) => state.earnings.list)
 
     return (
         <>
@@ -41,20 +62,7 @@ function EarningPage() {
                 <NoEntries message='Einnahmen' />
             ) : (
                 <>
-                    <PieChart width={600} height={400} className="no-outline" style={{ justifySelf: 'center' }}>
-                        <Pie
-                            data={data}
-                            dataKey="value"
-                            nameKey="category"
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={150}
-                            label={(entry) => entry.name}
-                            stroke={'none'}
-                        />
-                        <Tooltip />
-                        <Legend />
-                    </PieChart>
+                    <EarningPieChart/>
                     <List
                         itemLayout="horizontal"
                         dataSource={earningsList}

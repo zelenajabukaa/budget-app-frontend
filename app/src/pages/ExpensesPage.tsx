@@ -13,8 +13,7 @@ import type {Expense} from "../reduxStore/expensesSlice.ts";
 
 const { Title } = Typography
 
-function ExpensesPage() {
-    const [isPopupOpen, setIsPopupOpen] = useState(false)
+export function ExpensesPieChart(){
 
     const expensesList = useSelector((state: RootState) => state.expenses.list)
 
@@ -32,6 +31,28 @@ function ExpensesPage() {
         }))
     }, [expensesList])
 
+    return(
+        <PieChart width={600} height={400} className="no-outline" style={{ justifySelf: 'center' }}>
+            <Pie
+                data={data}
+                dataKey="value"
+                nameKey="category"
+                cx="50%"
+                cy="50%"
+                outerRadius={150}
+                label={(entry) => entry.name}
+                stroke={'none'}
+            />
+            <Tooltip />
+            <Legend />
+        </PieChart>
+    )
+}
+
+function ExpensesPage() {
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+    const expensesList = useSelector((state: RootState) => state.expenses.list)
 
     return (
         <>
@@ -41,20 +62,7 @@ function ExpensesPage() {
                 <NoEntries message='Ausgaben' />
             ) : (
                 <>
-                    <PieChart width={600} height={400} className="no-outline" style={{ justifySelf: 'center' }}>
-                        <Pie
-                            data={data}
-                            dataKey="value"
-                            nameKey="category"
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={150}
-                            label={(entry) => entry.name}
-                            stroke={'none'}
-                        />
-                        <Tooltip />
-                        <Legend />
-                    </PieChart>
+                    <ExpensesPieChart/>
                     <List
                         itemLayout="horizontal"
                         dataSource={expensesList}

@@ -1,8 +1,17 @@
 import Header from "../components/header/Header.tsx";
-import {ConfigProvider, Tabs, type TabsProps, theme} from "antd";
+import {ConfigProvider, Tabs, type TabsProps, theme, Typography} from "antd";
 import {PieChartFilled, PieChartOutlined, PieChartTwoTone} from "@ant-design/icons";
+import {EarningPieChart} from "./EarningPage.tsx";
+import {ExpensesPieChart} from "./ExpensesPage.tsx";
+import AddButton from "../components/buttons/AddButton.tsx";
+import {useState} from "react";
+import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
+
+const { Title } = Typography
 
 function HomePage() {
+
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
 
     const onChange = (key: string) => {
         console.log(key);
@@ -12,13 +21,13 @@ function HomePage() {
         {
             key: '1',
             label: 'Einnahmen',
-            children: 'Content of Tab Pane 1',
+            children: <EarningPieChart/>,
             icon: <PieChartFilled/>
         },
         {
             key: '2',
             label: 'Ausgaben',
-            children: 'Content of Tab Pane 2',
+            children: <ExpensesPieChart/>,
             icon: <PieChartOutlined/>
         },
         {
@@ -31,11 +40,15 @@ function HomePage() {
 
     return (
         <>
-
             <Header/>
+            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
+            <Title style={{ justifySelf: 'center', color: 'white' }}>Home</Title>
             <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>
                 <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} onChange={onChange} type={'card'} tabPlacement={'top'}/>
             </ConfigProvider>
+            <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
+                <TransactionButtons/>
+            </div>
         </>
     )
 }
