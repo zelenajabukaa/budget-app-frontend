@@ -6,6 +6,7 @@ import {ExpensesPieChart} from "./ExpensesPage.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
 import {useState} from "react";
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
+import TransactionBarChart from "../components/piecharts/TransactionLineChart.tsx";
 
 const { Title } = Typography
 
@@ -29,7 +30,7 @@ function HomePage() {
         {
             key: '3',
             label: 'Alle Transaktionen',
-            children: 'Content of Tab Pane 3',
+            children: <TransactionBarChart/>,
             icon: <PieChartTwoTone/>
         },
     ]

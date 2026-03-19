@@ -32,23 +32,25 @@ export function EarningPieChart() {
         }))
     }, [earningsList])
 
+    if (earningsList.length === 0) {
+        return <PieChartSkeleton text={'Einnahmen'}/>
+    }
+
     return (
-        earningsList.length > 0 ? (
-            <PieChart width={600} height={400} className="no-outline" style={{justifySelf: 'center'}}>
-                <Pie
-                    data={data}
-                    dataKey="value"
-                    nameKey="category"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={150}
-                    label={(entry) => entry.name}
-                    stroke={'none'}
-                />
-                <Tooltip/>
-                <Legend/>
-            </PieChart>
-        ) : <PieChartSkeleton text={'Einnahmen'}/>
+        <PieChart width={600} height={400} className="no-outline" style={{justifySelf: 'center'}}>
+            <Pie
+                data={data}
+                dataKey="value"
+                nameKey="category"
+                cx="50%"
+                cy="50%"
+                outerRadius={150}
+                label={(entry) => entry.name}
+                stroke={'none'}
+            />
+            <Tooltip/>
+            <Legend/>
+        </PieChart>
     )
 }
 
