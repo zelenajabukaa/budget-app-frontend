@@ -4,7 +4,7 @@ import AddEarningPage from "./pages/AddEarningPage.tsx";
 import EarningPage from "./pages/EarningPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import ExpensesPage from "./pages/ExpensesPage.tsx";
-import AddExpenseForm from "./components/forms/AddExpenseForm.tsx";
+import AddExpensePage from "./pages/AddExpensePage.tsx";
 
 function App() {
     return(
@@ -13,7 +13,7 @@ function App() {
             <Route path='/earnings' element={<EarningPage/>}/>
             <Route path='/expenses' element={<ExpensesPage/>}/>
             <Route path='/add-earning' element={<AddEarningPage/>}/>
-            <Route path='/add-expense' element={<AddExpenseForm/>}/>
+            <Route path='/add-expense' element={<AddExpensePage/>}/>
         </Routes>
     )
 }

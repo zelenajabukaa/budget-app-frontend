@@ -1,5 +1,6 @@
 import './Header.css'
-import { useState } from 'react'
+import {useState} from 'react'
+import {BankFilled} from "@ant-design/icons";
 
 type HeaderProps = {
     title?: string
@@ -15,12 +16,14 @@ function Header({title}: HeaderProps) {
     return (
         <>
             <header className="header">
-                <h1 className="title">{title ? title : 'Budget App'}</h1>
                 <div className="burgerMenu" onClick={toggleMenu}>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
                 </div>
+                <h1 className="title">
+                    <a href="/#">{title ? title : 'Budget App'} <BankFilled/></a>
+                </h1>
             </header>
             {menuOpen && (
                 <nav className="dropdown">

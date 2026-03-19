@@ -39,7 +39,7 @@ function AddEarningForm() {
     ];
 
     return (
-        <CustomForm form={form} onSubmit={onSubmit} categoryOptions={categoryOptions} navigateTo={'/earnings'}/>
+        <CustomForm form={form} onSubmit={onSubmit} categoryOptions={categoryOptions} style={{marginTop: '2rem'}} navigateTo={'/earnings'}/>
     )
 }
 

@@ -1,19 +1,20 @@
-import { List, Typography } from "antd";
+import {List, Typography} from "antd";
 import NoEntries from "../components/notifications/NoEntries.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
-import { useMemo, useState } from "react";
+import {useMemo, useState} from "react";
 import Header from "../components/header/Header.tsx";
-import type { RootState } from "../reduxStore/store.ts";
-import { useSelector } from "react-redux";
-import type { Earning } from "../reduxStore/earningsSlice.ts";
-import { Legend, Pie, PieChart, Tooltip } from "recharts";
+import type {RootState} from "../reduxStore/store.ts";
+import {useSelector} from "react-redux";
+import type {Earning} from "../reduxStore/earningsSlice.ts";
+import {Legend, Pie, PieChart, Tooltip} from "recharts";
 import TransactionCard from "../components/cards/TransactionCard.tsx";
-import { categoryColors } from '../categoryColors.ts';
+import {categoryColors} from '../categoryColors.ts';
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
+import PieChartSkeleton from "../components/skeletons/PieChartSkeleton.tsx";
 
-const { Title } = Typography
+const {Title} = Typography
 
-export function EarningPieChart(){
+export function EarningPieChart() {
 
     const earningsList = useSelector((state: RootState) => state.earnings.list)
 
@@ -31,21 +32,23 @@ export function EarningPieChart(){
         }))
     }, [earningsList])
 
-    return(
-        <PieChart width={600} height={400} className="no-outline" style={{ justifySelf: 'center' }}>
-            <Pie
-                data={data}
-                dataKey="value"
-                nameKey="category"
-                cx="50%"
-                cy="50%"
-                outerRadius={150}
-                label={(entry) => entry.name}
-                stroke={'none'}
-            />
-            <Tooltip />
-            <Legend />
-        </PieChart>
+    return (
+        earningsList.length > 0 ? (
+            <PieChart width={600} height={400} className="no-outline" style={{justifySelf: 'center'}}>
+                <Pie
+                    data={data}
+                    dataKey="value"
+                    nameKey="category"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={150}
+                    label={(entry) => entry.name}
+                    stroke={'none'}
+                />
+                <Tooltip/>
+                <Legend/>
+            </PieChart>
+        ) : <PieChartSkeleton text={'Einnahmen'}/>
     )
 }
 
@@ -56,10 +59,10 @@ function EarningPage() {
 
     return (
         <>
-            <Header />
-            <Title style={{ justifySelf: 'center', color: 'white' }}>Einnahmen</Title>
+            <Header/>
+            <Title style={{justifySelf: 'center', color: 'white'}}>Einnahmen</Title>
             {earningsList.length === 0 ? (
-                <NoEntries message='Einnahmen' />
+                <NoEntries message='Einnahmen'/>
             ) : (
                 <>
                     <EarningPieChart/>
@@ -75,7 +78,7 @@ function EarningPage() {
                 </>
 
             )}
-            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)} />
+            <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
 
             <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
                 <TransactionButtons/>
