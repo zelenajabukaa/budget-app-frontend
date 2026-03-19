@@ -26,10 +26,8 @@
     transition-delay: 0.1s;
 }
 
-/* entfernt die outline von dem ausgewählten kuchenstück */
+/* entfernt die outline den charts */
 .no-outline:focus,
-.no-outline .recharts-sector:focus,
-.no-outline .recharts-surface:focus,
-.no-outline .recharts-legend-item:focus {
+.no-outline *:focus {
     outline: none;
 }

@@ -20,7 +20,7 @@ function TransactionBarChart() {
     ]
 
     return (
-        <ResponsiveContainer width="50%" height={400}>
+        <ResponsiveContainer width="50%" height={400} className="no-outline">
             <BarChart data={data}>
                 <XAxis dataKey="xAxisName"/>
                 <YAxis/>
