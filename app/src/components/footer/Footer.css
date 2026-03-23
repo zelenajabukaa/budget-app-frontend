@@ -1,15 +1,12 @@
 .footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
+    z-index: 10;
     display: flex;
     justify-content: flex-end;
     background-color: white;
     color: black;
     padding: 1rem 2rem;
-    z-index: 1;
 }
 
 .footer-email {
