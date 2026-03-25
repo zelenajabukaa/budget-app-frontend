@@ -1,0 +1,12 @@
+.total-card {
+    width: 600px;
+    margin: 3.5rem auto 1rem auto;
+    box-shadow: 0px 0px 30px 1px rgba(255,255,255,0.75);
+}
+
+@media screen and (max-width: 624px){
+    /* this is so that the card also gets smaller on the mobile version */
+    .total-card {
+        width: 100%;
+    }
+}

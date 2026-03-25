@@ -1,4 +1,5 @@
 import {Card} from "antd";
+import './TotalCard.css'
 
 type TotalCardProps = {
     type: 'expense' | 'earning'
@@ -14,8 +15,7 @@ function TotalCard({type, total}: TotalCardProps) {
 
     return (
         <Card
-            style={{ width: 600, margin: '3.5rem auto 1rem auto', boxShadow: '0px 0px 30px 1px rgba(255,255,255,0.75'}}
-        >
+            className={'total-card'}>
             <div style={{
                 fontSize: '1.6rem',
                 fontWeight: 'bold',
