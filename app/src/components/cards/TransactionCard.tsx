@@ -34,7 +34,7 @@ function TransactionCard({ type, item }: TransactionCardProps) {
                 </div>
             </Card>
             <Modal
-                title={<strong>{item.category}</strong>}
+                title={<div style={{color: categoryColors[item.category]}}>{item.category}</div>}
                 open={isModalOpen}
                 onCancel={() => setIsModalOpen(false)}
                 footer={null}
