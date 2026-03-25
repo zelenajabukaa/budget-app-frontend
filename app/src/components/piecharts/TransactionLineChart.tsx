@@ -11,6 +11,7 @@ function TransactionBarChart() {
         return <PieChartSkeleton text={'Transaktionen'}/>
     }
 
+    //takes either the earnings or the expenses and sums either of them together with the reduce
     const totalEarnings = earningsList.reduce((sumEarnings, item) => sumEarnings + item.amount, 0)
     const totalExpenses = expensesList.reduce((sumExpenses, item) => sumExpenses + item.amount, 0)
 
@@ -20,14 +21,14 @@ function TransactionBarChart() {
     ]
 
     return (
-        <ResponsiveContainer width="50%" height={400} className="no-outline">
+        <ResponsiveContainer height={600} className="no-outline">
             <BarChart data={data}>
-                <XAxis dataKey="xAxisName"/>
+                <XAxis dataKey="xAxisName"/> {/*datakey should correspond to the variable name in data*/}
                 <YAxis/>
                 <Tooltip formatter={(value) => `${Number(value).toFixed(2)} CHF`}/>
-                <Bar dataKey="totalSum" name={"Summe"}>
+                <Bar dataKey="totalSum" name={"Summe"}>{/* With name you can overwrite the dataKey so that it doesn't show totalSum */}
                     {data.map((bar, index) => (
-                        <Cell key={index} fill={bar.fill}/>
+                        <Cell key={index} fill={bar.fill}/> //it is shown as deprecated but it's the easiest and best way to do it
                     ))}
                 </Bar>
             </BarChart>
