@@ -1,3 +1,4 @@
+import Header from "../components/header/Header.tsx";
 import {ConfigProvider, Tabs, type TabsProps, theme, Typography} from "antd";
 import {PieChartFilled, PieChartOutlined, PieChartTwoTone} from "@ant-design/icons";
 import {EarningPieChart} from "./EarningPage.tsx";
@@ -36,6 +37,7 @@ function HomePage() {
 
     return (
         <>
+            <Header/>
             <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
             <Title style={{ justifySelf: 'center', color: 'white' }}>Home</Title>
             <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>

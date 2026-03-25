@@ -5,22 +5,16 @@ import EarningPage from "./pages/EarningPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import ExpensesPage from "./pages/ExpensesPage.tsx";
 import AddExpensePage from "./pages/AddExpensePage.tsx";
-import Footer from "./components/footer/Footer.tsx";
-import Header from "./components/header/Header.tsx";
 
 function App() {
     return(
-        <div>
-            <Header/>
-            <Routes>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/earnings' element={<EarningPage/>}/>
-                <Route path='/expenses' element={<ExpensesPage/>}/>
-                <Route path='/add-earning' element={<AddEarningPage/>}/>
-                <Route path='/add-expense' element={<AddExpensePage/>}/>
-            </Routes>
-            <Footer/>
-        </div>
+        <Routes>
+            <Route path='/' element={<HomePage/>}/>
+            <Route path='/earnings' element={<EarningPage/>}/>
+            <Route path='/expenses' element={<ExpensesPage/>}/>
+            <Route path='/add-earning' element={<AddEarningPage/>}/>
+            <Route path='/add-expense' element={<AddExpensePage/>}/>
+        </Routes>
     )
 }
 
