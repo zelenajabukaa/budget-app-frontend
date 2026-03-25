@@ -1,7 +1,7 @@
 .total-card {
     width: 600px;
     margin: 3.5rem auto 1rem auto;
-    box-shadow: 0px 0px 30px 1px rgba(255,255,255,0.75);
+    box-shadow: 0 0 30px 1px rgba(255,255,255,0.75);
 }
 
 @media screen and (max-width: 624px){
