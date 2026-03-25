@@ -10,7 +10,7 @@ import Header from "./components/header/Header.tsx";
 
 function App() {
     return(
-        <div style={{minHeight: '100vh'}}>
+        <div>
             <Header/>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
