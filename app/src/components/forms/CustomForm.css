@@ -2,3 +2,10 @@
     width: 40%;
     justify-self: center;
 }
+
+/* this is for mobile devices so that it doesn't look all too squished */
+@media screen and (max-width: 768px){
+    .main-card {
+        width: 90%;
+    }
+}

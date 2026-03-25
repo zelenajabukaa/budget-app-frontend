@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['earnings','expenses']
+    whitelist: ['earnings','expenses'] // puts both the earnings and expenses into the whitelist, so that they persist and don't get deleted every page refresh
 }
 
 const rootReducer = combineReducers({

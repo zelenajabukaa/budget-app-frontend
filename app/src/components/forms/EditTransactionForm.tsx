@@ -57,7 +57,7 @@ function EditTransactionForm({type, item, open, onClose}: EditTransactionFormPro
                     name="amount"
                     rules={[{required: true, message: 'Bitte einen Betrag eingeben!'}]}
                 >
-                    <InputNumber style={{width: '100%'}} min={0}/>
+                    <InputNumber style={{width: '100%'}} min={1}/>
                 </Form.Item>
                 <Form.Item
                     label="Kategorie"

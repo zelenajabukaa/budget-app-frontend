@@ -4,7 +4,7 @@ export type Expense = {
     id: string
     description: string
     amount: number
-    category: 'Miete' | 'Lebensmittel' | 'Transport' | 'Freizeit' | 'Handyrechnung' | 'Sonstiges'
+    category: 'Miete' | 'Lebensmittel' | 'Transport' | 'Freizeit' | 'Handyrechnung' | 'Sonstiges'// also the categories in the forms
 }
 
 type ExpensesState = {

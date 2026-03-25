@@ -6,7 +6,7 @@
     cursor: pointer;
     transition: ease 0.5s
 }
-{/*the add button grows a little bit when you hover over it*/}
+/* the add button grows a little bit when you hover over it */
 .icon:hover {
     opacity: 0.8;
     transform: scale(1.1);

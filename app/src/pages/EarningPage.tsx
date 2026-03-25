@@ -19,13 +19,14 @@ export function EarningPieChart() {
     const earningsList = useSelector((state: RootState) => state.earnings.list)
 
     const data = useMemo(() => {
-        const grouped: Record<string, number> = {}
+        const grouped: Record<string, number> = {} // I'm using a Record because it's perfect for grouping things together with a key and value
 
         earningsList.forEach((item: Earning) => {
-            grouped[item.category] = (grouped[item.category] || 0) + item.amount
+            grouped[item.category] = (grouped[item.category] || 0) + item.amount // this first looks if there already is a group with values and then it adds the amount, otherwise it takes 0 as initial
         })
 
-        return Object.entries(grouped).map(([category, value]) => ({
+        return Object.entries(grouped).map(([category, value]) => ({ // with entries I can use .map() and entries have both key AND value
+            // turns the grouped object into an array and afterwards makes it into an array of objects with the .map
             category: category,
             value,
             fill: categoryColors[category],
@@ -68,8 +69,7 @@ function EarningPage() {
             ) : (
                 <>
                     <EarningPieChart/>
-                    <List
-                        itemLayout="horizontal"
+                    <List //the list under the Piechart that displays the Cards with the Transactions
                         dataSource={earningsList}
                         renderItem={(item: Earning) => (
                             <List.Item>

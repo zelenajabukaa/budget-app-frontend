@@ -6,7 +6,7 @@ import {ExpensesPieChart} from "./ExpensesPage.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
 import {useState} from "react";
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
-import TransactionBarChart from "../components/piecharts/TransactionLineChart.tsx";
+import TransactionBarChart from "../components/piecharts/TransactionBarChart.tsx";
 
 const { Title } = Typography
 

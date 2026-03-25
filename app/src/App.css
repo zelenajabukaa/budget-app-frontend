@@ -1,4 +1,5 @@
 .action-buttons.open .action-button {
+    /* this how it looks after the animation so it's visible, bigger and can be clicked */
     opacity: 1;
     transform: translateY(0) scale(1);
     pointer-events: auto;
@@ -11,13 +12,13 @@
     right: 6rem;
     opacity: 0;
     transform: translateY(10px) translateX(30px) scale(0.8);
-    /* das heisst einfach es ist nach unten verschoben und kleiner wo die animation noch nicht geladet ist */
+    /* this just means that its moved and smaller when the animation is still not played */
     pointer-events: none;
-    /* die buttons können nicht geklickt werden wenn sie unsichtbar sind */
+    /* the buttons cannot be clicked when they are invisible */
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-/*hier sind noch 2 delays sodass der obere button eine grössere verzögerung hat*/
+/*here are some delays so that the buttons don't play the animation simultaneously*/
 .action-buttons.open .action-button:nth-of-type(1) {
     transition-delay: 0.05s;
 }
@@ -26,7 +27,7 @@
     transition-delay: 0.1s;
 }
 
-/* entfernt die outline den charts */
+/* removes the outline from the charts */
 .no-outline:focus,
 .no-outline *:focus {
     outline: none;

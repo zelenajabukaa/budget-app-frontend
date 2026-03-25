@@ -17,6 +17,7 @@ function Header({title}: HeaderProps) {
         <>
             <header className="header">
                 <div className="burgerMenu" onClick={toggleMenu}>
+                    {/* the menu with the 3 lines */}
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
@@ -29,8 +30,8 @@ function Header({title}: HeaderProps) {
                 <nav className="dropdown">
                     <ul>
                         <li><a href="/#">Home</a></li>
-                        <li><a href="earnings">Einnahmen</a></li>
-                        <li><a href="expenses">Ausgaben</a></li>
+                        <li><a href="/earnings">Einnahmen</a></li>
+                        <li><a href="/expenses">Ausgaben</a></li>
                     </ul>
                 </nav>
             )}

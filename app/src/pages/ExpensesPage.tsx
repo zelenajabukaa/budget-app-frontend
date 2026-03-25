@@ -18,6 +18,7 @@ export function ExpensesPieChart() {
 
     const expensesList = useSelector((state: RootState) => state.expenses.list)
 
+    //the same implementation as in earningPage
     const data = useMemo(() => {
         const grouped: Record<string, number> = {}
 

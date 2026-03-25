@@ -1,13 +1,9 @@
 import { Skeleton, Typography } from "antd"
 
-type PieChartSkeletonProps = {
-    text: string
-}
-
-function PieChartSkeleton({text}: PieChartSkeletonProps) {
+function TransactionChartSkeleton() {
     return(
         <div style={{justifySelf: 'center'}}>
-            <Skeleton.Avatar active={true} style={{height: 300, width: 300}}/>{/* Avatar because it has a round shape so it looks like the PieChart when it's loading */}
+            <Skeleton.Node active={true} style={{height: 600, width: 900}}/>
             <Typography.Paragraph
                 type="warning"
                 style={{
@@ -15,10 +11,10 @@ function PieChartSkeleton({text}: PieChartSkeletonProps) {
                     textAlign: 'center'
                 }}
             >
-                Keine Daten für {text}
+                Nicht ausreichend Daten für alle Transaktionen
             </Typography.Paragraph>
         </div>
     )
 }
 
-export default PieChartSkeleton
+export default TransactionChartSkeleton

@@ -21,14 +21,14 @@ function CustomForm({style, form, onSubmit, categoryOptions, navigateTo}: Custom
                 form={form}
                 layout="vertical"
                 onFinish={onSubmit}
-                initialValues={{amount: 0, description: '', category: undefined}}
+                initialValues={{description: '', category: undefined}}
             >
                 <Form.Item
                     label="Betrag"
                     name="amount"
                     rules={[{required: true, message: 'Bitte einen Betrag eingeben!'}]}
                 >
-                    <InputNumber style={{width: '100%'}} min={0}/>
+                    <InputNumber style={{width: '100%'}} min={1}/>
                 </Form.Item>
                 <Form.Item
                     label="Kategorie"
