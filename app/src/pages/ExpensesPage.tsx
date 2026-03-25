@@ -11,6 +11,7 @@ import {categoryColors} from '../categoryColors.ts';
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
 import type {Expense} from "../reduxStore/expensesSlice.ts";
 import PieChartSkeleton from "../components/skeletons/PieChartSkeleton.tsx";
+import TotalCard from "../components/cards/TotalCard.tsx";
 
 const {Title} = Typography
 
@@ -60,6 +61,11 @@ function ExpensesPage() {
 
     const expensesList = useSelector((state: RootState) => state.expenses.list)
 
+    const totalExpenses = useMemo(
+        () => expensesList.reduce((sum, item) => sum + item.amount, 0),
+        [expensesList]
+    )
+
     return (
         <>
             <Header/>
@@ -69,6 +75,7 @@ function ExpensesPage() {
             ) : (
                 <>
                     <ExpensesPieChart/>
+                    <TotalCard type={'expense'} total={totalExpenses}/>
                     <List
                         itemLayout="horizontal"
                         dataSource={expensesList}

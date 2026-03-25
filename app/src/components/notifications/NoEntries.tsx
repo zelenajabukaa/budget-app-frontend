@@ -15,4 +15,4 @@ function NoEntries({ message }: NoEntriesProps) {
 
 }
 
-export default NoEntries;
+export default NoEntries

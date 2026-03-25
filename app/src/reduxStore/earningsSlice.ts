@@ -10,11 +10,13 @@ export type Earning = {
 type EarningsState = {
     list: Earning[]
     isLoading: boolean
+    moneyRainTriggered: boolean
 }
 
 const initialState: EarningsState = {
     list: [],
     isLoading: false,
+    moneyRainTriggered: false,
 }
 
 export const earningsSlice = createSlice({
@@ -36,9 +38,13 @@ export const earningsSlice = createSlice({
                 state.list[index] = action.payload
             }
         },//searches for the right id and only if the id exists it updates the values and it STAYS at the same place in the array
+
+        triggerMoneyRain: (state) => {
+            state.moneyRainTriggered = true
+        },//sets the money rain easter egg as already triggered so it only plays once
     }
 })
 
-export const { addEarning, removeEarning, updateEarning } = earningsSlice.actions
+export const { addEarning, removeEarning, updateEarning, triggerMoneyRain } = earningsSlice.actions
 
 export default earningsSlice.reducer

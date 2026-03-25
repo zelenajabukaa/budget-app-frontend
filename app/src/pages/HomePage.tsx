@@ -7,24 +7,50 @@ import AddButton from "../components/buttons/AddButton.tsx";
 import {useState} from "react";
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
 import TransactionBarChart from "../components/piecharts/TransactionBarChart.tsx";
+import {useSelector} from "react-redux";
+import type {RootState} from "../reduxStore/store.ts";
+import TotalCard from "../components/cards/TotalCard.tsx";
 
-const { Title } = Typography
+const {Title} = Typography
 
 function HomePage() {
 
     const [isPopupOpen, setIsPopupOpen] = useState(false)
 
+    const earningsList = useSelector((state: RootState) => state.earnings.list)
+    const expensesList = useSelector((state: RootState) => state.expenses.list)
+
+    //takes either the earnings or the expenses and sums either of them together with the reduce
+    const totalEarnings = earningsList.reduce((sumEarnings, item) => sumEarnings + item.amount, 0)
+    const totalExpenses = expensesList.reduce((sumExpenses, item) => sumExpenses + item.amount, 0)
+
     const items: TabsProps['items'] = [
         {
             key: '1',
             label: 'Einnahmen',
-            children: <EarningPieChart/>,
+            children:
+                <>
+                    <EarningPieChart/>
+                    {(earningsList.length !== 0) && (
+                        <ConfigProvider theme={{algorithm: theme.compactAlgorithm}}>
+                            <TotalCard type={'earning'} total={totalEarnings}/>
+                        </ConfigProvider>
+                    )}
+                </>,
             icon: <PieChartFilled/>
         },
         {
             key: '2',
             label: 'Ausgaben',
-            children: <ExpensesPieChart/>,
+            children:
+                <>
+                    <ExpensesPieChart/>
+                    {(expensesList.length !== 0) && (
+                        <ConfigProvider theme={{algorithm: theme.compactAlgorithm}}>
+                            <TotalCard type={'expense'} total={totalExpenses}/>
+                        </ConfigProvider>
+                    )}
+                </>,
             icon: <PieChartOutlined/>
         },
         {
@@ -39,9 +65,10 @@ function HomePage() {
         <>
             <Header/>
             <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
-            <Title style={{ justifySelf: 'center', color: 'white' }}>Home</Title>
+            <Title style={{justifySelf: 'center', color: 'white'}}>Home</Title>
             <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>
-                <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} type={'card'} tabPlacement={'top'}/>
+                <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} type={'card'}
+                      tabPlacement={'top'}/>
             </ConfigProvider>
             <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
                 <TransactionButtons/>
