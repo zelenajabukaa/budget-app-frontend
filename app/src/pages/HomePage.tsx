@@ -10,6 +10,7 @@ import TransactionBarChart from "../components/piecharts/TransactionBarChart.tsx
 import {useSelector} from "react-redux";
 import type {RootState} from "../reduxStore/store.ts";
 import TotalCard from "../components/cards/TotalCard.tsx";
+import BalanceCard from "../components/cards/BalanceCard.tsx";
 
 const {Title} = Typography
 
@@ -70,6 +71,7 @@ function HomePage() {
                 <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} type={'card'}
                       tabPlacement={'top'}/>
             </ConfigProvider>
+            <BalanceCard/>
             <div className={`action-buttons ${isPopupOpen ? 'open' : ''}`}>
                 <TransactionButtons/>
             </div>

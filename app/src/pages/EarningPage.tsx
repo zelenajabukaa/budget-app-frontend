@@ -6,7 +6,7 @@ import Header from "../components/header/Header.tsx";
 import type {RootState} from "../reduxStore/store.ts";
 import {useDispatch, useSelector} from "react-redux";
 import type {Earning} from "../reduxStore/earningsSlice.ts";
-import {triggerMoneyRain} from "../reduxStore/earningsSlice.ts";
+import {setMoneyRainTriggered} from "../reduxStore/earningsSlice.ts";
 import {Legend, Pie, PieChart, Tooltip} from "recharts";
 import TransactionCard from "../components/cards/TransactionCard.tsx";
 import {categoryColors} from '../categoryColors.ts';
@@ -70,11 +70,11 @@ function EarningPage() {
         [earningsList]
     )
 
-    const MONEY_RAIN_THRESHOLD = 1_000_000_000
-    const showMoneyRain = totalEarnings >= MONEY_RAIN_THRESHOLD && !moneyRainTriggered
+    const moneyrainTreshold = 1_000_000_000
+    const showMoneyRain = totalEarnings >= moneyrainTreshold && !moneyRainTriggered
 
     const handleMoneyRainFinished = useCallback(() => {
-        dispatch(triggerMoneyRain())
+        dispatch(setMoneyRainTriggered()) //sets the moneyRainTriggered to true in the redux so that the easter egg only happens once
     }, [dispatch])
 
     return (

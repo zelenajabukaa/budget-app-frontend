@@ -39,12 +39,12 @@ export const earningsSlice = createSlice({
             }
         },//searches for the right id and only if the id exists it updates the values and it STAYS at the same place in the array
 
-        triggerMoneyRain: (state) => {
+        setMoneyRainTriggered: (state) => {
             state.moneyRainTriggered = true
         },//sets the money rain easter egg as already triggered so it only plays once
     }
 })
 
-export const { addEarning, removeEarning, updateEarning, triggerMoneyRain } = earningsSlice.actions
+export const { addEarning, removeEarning, updateEarning, setMoneyRainTriggered } = earningsSlice.actions
 
 export default earningsSlice.reducer
