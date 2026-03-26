@@ -1,9 +1,13 @@
 import { Skeleton, Typography } from "antd"
 
-function TransactionChartSkeleton() {
+type TransactionChartSkeletonProps = {
+    style?: React.CSSProperties
+}
+
+function TransactionChartSkeleton({style}: TransactionChartSkeletonProps) {
     return(
-        <div style={{justifySelf: 'center'}}>
-            <Skeleton.Node active={true} style={{height: 600, width: 900}}/>
+        <div style={style}>
+            <Skeleton.Node active={true} style={{height: 400, width: 750}}/>
             <Typography.Paragraph
                 type="warning"
                 style={{

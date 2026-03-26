@@ -3,12 +3,16 @@ import type {RootState} from "../../reduxStore/store.ts";
 import {Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import TransactionChartSkeleton from "../skeletons/TransactionChartSkeleton.tsx";
 
-function TransactionBarChart() {
+type TransactionBarChartProps = {
+    style?: React.CSSProperties;
+}
+
+function TransactionBarChart({style}: TransactionBarChartProps) {
     const earningsList = useSelector((state: RootState) => state.earnings.list)
     const expensesList = useSelector((state: RootState) => state.expenses.list)
 
     if (earningsList.length === 0 || expensesList.length === 0) {
-        return <TransactionChartSkeleton/>
+        return <TransactionChartSkeleton style={{marginTop: '4rem', justifySelf: 'center'}}/>
     }
 
     //takes either the earnings or the expenses and sums either of them together with the reduce
@@ -21,7 +25,7 @@ function TransactionBarChart() {
     ]
 
     return (
-        <ResponsiveContainer height={600} className="no-outline">
+        <ResponsiveContainer height={500} style={style} className="no-outline">
             <BarChart data={data}>
                 <XAxis dataKey="xAxisName"/> {/*datakey should correspond to the variable name in data*/}
                 <YAxis/>

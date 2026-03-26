@@ -57,7 +57,7 @@ function HomePage() {
         {
             key: '3',
             label: 'Alle Transaktionen',
-            children: <TransactionBarChart/>,
+            children: <TransactionBarChart style={{marginTop: '5rem'}}/>,
             icon: <PieChartTwoTone/>
         },
     ]
