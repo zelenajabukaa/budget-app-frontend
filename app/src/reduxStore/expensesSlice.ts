@@ -1,10 +1,11 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit'
+import type {ExpenseCategory} from "../types.ts";
 
 export type Expense = {
     id: string
     description?: string
     amount: number
-    category: 'Miete' | 'Lebensmittel' | 'Transport' | 'Freizeit' | 'Handyrechnung' | 'Sonstiges'// also the categories in the forms
+    category: ExpenseCategory // also the categories in the forms
 }
 
 type ExpensesState = {

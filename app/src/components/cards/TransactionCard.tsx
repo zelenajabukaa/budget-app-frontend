@@ -4,14 +4,15 @@ import type {Expense} from "../../reduxStore/expensesSlice.ts";
 import {removeExpense} from "../../reduxStore/expensesSlice.ts";
 import type {Earning} from "../../reduxStore/earningsSlice.ts";
 import {removeEarning} from "../../reduxStore/earningsSlice.ts";
-import {categoryColors} from '../../categoryColors.ts';
 import {useDispatch} from "react-redux";
 import type {AppDispatch} from "../../reduxStore/store.ts";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import EditTransactionForm from "../forms/EditTransactionForm.tsx";
+import type {TransactionType} from "../../types.ts";
+import {categoryColors} from "../../categoryColors.ts";
 
 type TransactionCardProps = {
-    type: 'expense' | 'earning'
+    type: TransactionType
     item: Earning | Expense
 }
 

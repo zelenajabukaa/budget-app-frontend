@@ -1,8 +1,9 @@
 import {Card} from "antd";
 import './TotalCard.css'
+import type {TransactionType} from "../../types.ts";
 
 type TotalCardProps = {
-    type: 'expense' | 'earning'
+    type: TransactionType
     total: number
 }
 

@@ -8,9 +8,10 @@ import {updateExpense} from "../../reduxStore/expensesSlice.ts";
 import {useEffect} from "react";
 import {expenseCategories} from "./AddExpenseForm.tsx";
 import {earningCategories} from "./AddEarningForm.tsx";
+import type {TransactionType} from "../../types.ts";
 
 type EditTransactionFormProps = {
-    type: 'expense' | 'earning'
+    type: TransactionType
     item: Earning | Expense
     open: boolean
     onClose: () => void

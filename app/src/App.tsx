@@ -5,9 +5,12 @@ import EarningPage from "./pages/EarningPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import ExpensesPage from "./pages/ExpensesPage.tsx";
 import AddExpensePage from "./pages/AddExpensePage.tsx";
+import Header from "./components/header/Header.tsx";
 
 function App() {
     return(
+        <>
+        <Header/>
         <Routes>
             <Route path='/' element={<HomePage/>}/>
             <Route path='/earnings' element={<EarningPage/>}/>
@@ -15,6 +18,7 @@ function App() {
             <Route path='/add-earning' element={<AddEarningPage/>}/>
             <Route path='/add-expense' element={<AddExpensePage/>}/>
         </Routes>
+        </>
     )
 }
 

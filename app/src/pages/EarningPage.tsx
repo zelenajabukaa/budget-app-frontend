@@ -2,7 +2,6 @@ import { List, Typography} from "antd";
 import NoEntries from "../components/notifications/NoEntries.tsx";
 import AddButton from "../components/buttons/AddButton.tsx";
 import {useCallback, useMemo, useState} from "react";
-import Header from "../components/header/Header.tsx";
 import type {RootState} from "../reduxStore/store.ts";
 import {useDispatch, useSelector} from "react-redux";
 import type {Earning} from "../reduxStore/earningsSlice.ts";
@@ -80,7 +79,6 @@ function EarningPage() {
     return (
         <>
             {showMoneyRain && <MoneyRain onFinished={handleMoneyRainFinished}/>}
-            <Header/>
             <Title style={{justifySelf: 'center', color: 'white'}}>Einnahmen</Title>
             {earningsList.length === 0 ? (
                 <NoEntries message='Einnahmen'/>

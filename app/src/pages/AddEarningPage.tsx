@@ -1,12 +1,10 @@
 import AddEarningForm from "../components/forms/AddEarningForm.tsx";
-import Header from "../components/header/Header.tsx";
 import {Typography} from "antd";
 
 
 function AddEarningPage(){
     return (
         <div>
-            <Header/>
             <Typography.Title style={{color: 'white', justifySelf: 'center'}}>Einnahme Hinzufügen</Typography.Title>
             <AddEarningForm/>
         </div>

@@ -14,4 +14,4 @@ export const categoryColors: { [key: string]: string } = {
     'Handyrechnung': '#ff9d66',
 
     'Sonstiges': '#595959',
-};
+}
