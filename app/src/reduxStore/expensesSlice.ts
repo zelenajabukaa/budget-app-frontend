@@ -2,7 +2,7 @@ import {createSlice, type PayloadAction} from '@reduxjs/toolkit'
 
 export type Expense = {
     id: string
-    description: string
+    description?: string
     amount: number
     category: 'Miete' | 'Lebensmittel' | 'Transport' | 'Freizeit' | 'Handyrechnung' | 'Sonstiges'// also the categories in the forms
 }

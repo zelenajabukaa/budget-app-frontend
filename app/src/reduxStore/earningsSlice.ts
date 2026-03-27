@@ -2,7 +2,7 @@ import {createSlice, type PayloadAction} from '@reduxjs/toolkit'
 
 export type Earning = {
     id: string
-    description: string
+    description?: string
     amount: number
     category: 'Gehalt' | 'Geschenk' | 'Verkauf' | 'Sonstiges' //these categories are also the ones that are displayed as the options in the forms
 }

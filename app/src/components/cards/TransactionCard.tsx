@@ -75,7 +75,7 @@ function TransactionCard({type, item}: TransactionCardProps) {
                 footer={null}
             >
                 <p><strong>Betrag:</strong> <span style={{color: amountColor}}>{amountPrefix} {item.amount.toFixed(2)} CHF</span></p>
-                <p><strong>Beschreibung:</strong> {item.description}</p>
+                {item.description && <p><strong>Beschreibung:</strong> {item.description}</p>}
             </Modal>
             <EditTransactionForm
                 type={type}

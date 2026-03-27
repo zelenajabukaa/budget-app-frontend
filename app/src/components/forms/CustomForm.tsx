@@ -40,7 +40,6 @@ function CustomForm({style, form, onSubmit, categoryOptions, navigateTo}: Custom
                 <Form.Item
                     label="Beschreibung"
                     name="description"
-                    rules={[{required: true, message: 'Bitte eine Beschreibung eingeben!'}]}
                 >
                     <Input/>
                 </Form.Item>

@@ -69,7 +69,6 @@ function EditTransactionForm({type, item, open, onClose}: EditTransactionFormPro
                 <Form.Item
                     label="Beschreibung"
                     name="description"
-                    rules={[{required: true, message: 'Bitte eine Beschreibung eingeben!'}]}
                 >
                     <Input/>
                 </Form.Item>

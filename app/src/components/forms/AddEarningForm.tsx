@@ -7,7 +7,7 @@ import CustomForm from "./CustomForm.tsx";
 import {nanoid} from "@reduxjs/toolkit";
 
 type FormValues = {
-    description: string
+    description?: string
     amount: number
     category: Earning['category']
 }
