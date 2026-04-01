@@ -6,7 +6,7 @@ import type {RootState} from "../reduxStore/store.ts";
 import {useSelector} from "react-redux";
 import {Legend, Pie, PieChart, Tooltip} from "recharts";
 import TransactionCard from "../components/cards/TransactionCard.tsx";
-import {categoryColors} from '../categoryColors.ts';
+import {categoryColors} from '../utils/categoryColors.ts';
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
 import type {Expense} from "../reduxStore/expensesSlice.ts";
 import PieChartSkeleton from "../components/skeletons/PieChartSkeleton.tsx";

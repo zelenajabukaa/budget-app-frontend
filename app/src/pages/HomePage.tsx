@@ -32,7 +32,7 @@ function HomePage() {
                 <>
                     <EarningPieChart/>
                     {(earningsList.length !== 0) && (
-                        <ConfigProvider theme={{algorithm: theme.compactAlgorithm}}>
+                        <ConfigProvider theme={{algorithm: theme.compactAlgorithm}}> {/* so that the totalcard doesn't get affected by the dark mode */}
                             <TotalCard type={'earning'} total={totalEarnings}/>
                         </ConfigProvider>
                     )}
@@ -65,7 +65,7 @@ function HomePage() {
         <>
             <AddButton onClick={() => setIsPopupOpen(prevState => !prevState)}/>
             <Title style={{justifySelf: 'center', color: 'white'}}>Home</Title>
-            <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}>
+            <ConfigProvider theme={{algorithm: theme.darkAlgorithm}}> {/*configprovider so that the tabs are in dark mode*/}
                 <Tabs style={{marginTop: '1rem'}} defaultActiveKey="1" items={items} type={'card'}
                       tabPlacement={'top'}/>
             </ConfigProvider>

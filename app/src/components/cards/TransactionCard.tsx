@@ -8,8 +8,9 @@ import {useDispatch} from "react-redux";
 import type {AppDispatch} from "../../reduxStore/store.ts";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import EditTransactionForm from "../forms/EditTransactionForm.tsx";
-import type {TransactionType} from "../../types.ts";
-import {categoryColors} from "../../categoryColors.ts";
+import type {TransactionType} from "../../utils/types.ts";
+import {categoryColors} from "../../utils/categoryColors.ts";
+import {getAmountStyle} from '../../utils/amountStyle';
 
 type TransactionCardProps = {
     type: TransactionType
@@ -21,9 +22,8 @@ function TransactionCard({type, item}: TransactionCardProps) {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
 
-    const isEarning = type === 'earning';
-    const amountColor = isEarning ? '#52c41a' : '#ff4d4f';
-    const amountPrefix = isEarning ? '+' : '-'; // + 9999 CHF, - 9999 CHF
+
+    const {isEarning: isEarning ,prefix: amountPrefix, color: amountColor} = getAmountStyle(type) // + 9999 CHF, - 9999 CHF
 
     const handleDelete = () => {
         if (isEarning) {
@@ -45,7 +45,7 @@ function TransactionCard({type, item}: TransactionCardProps) {
             label: 'Löschen',
             icon: <DeleteOutlined/>,
             danger: true, //make the delete option red
-            onClick: handleDelete,
+            onClick: handleDelete, //dispatch removeEarning or removeExpense
         },
     ]
 

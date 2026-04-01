@@ -1,5 +1,5 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit'
-import type {ExpenseCategory} from "../types.ts";
+import type {ExpenseCategory} from "../utils/types.ts";
 
 export type Expense = {
     id: string

@@ -1,6 +1,7 @@
 import {Card} from "antd";
 import './TotalCard.css'
-import type {TransactionType} from "../../types.ts";
+import type {TransactionType} from "../../utils/types.ts";
+import {getAmountStyle} from '../../utils/amountStyle'
 
 type TotalCardProps = {
     type: TransactionType
@@ -8,9 +9,7 @@ type TotalCardProps = {
 }
 
 function TotalCard({type, total}: TotalCardProps) {
-    const isEarning = type === 'earning';
-    const amountColor = isEarning ? '#52c41a' : '#ff4d4f';
-    const amountPrefix = isEarning ? '+' : '-'; // + 9999 CHF, - 9999 CHF
+    const {prefix: amountPrefix, color: amountColor} = getAmountStyle(type); // + 9999 CHF, - 9999 CHF
 
 
 

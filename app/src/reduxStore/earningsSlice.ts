@@ -1,5 +1,5 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit'
-import type {EarningCategory} from "../types.ts";
+import type {EarningCategory} from "../utils/types.ts";
 
 export type Earning = {
     id: string

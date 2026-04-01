@@ -8,10 +8,10 @@ import type {Earning} from "../reduxStore/earningsSlice.ts";
 import {setMoneyRainTriggered} from "../reduxStore/earningsSlice.ts";
 import {Legend, Pie, PieChart, Tooltip} from "recharts";
 import TransactionCard from "../components/cards/TransactionCard.tsx";
-import {categoryColors} from '../categoryColors.ts';
+import {categoryColors} from '../utils/categoryColors.ts';
 import TransactionButtons from "../components/buttons/TransactionButtons.tsx";
 import PieChartSkeleton from "../components/skeletons/PieChartSkeleton.tsx";
-import MoneyRain from "../components/effects/MoneyRain.tsx";
+import MoneyRain from "../components/easterEggs/MoneyRain.tsx";
 import TotalCard from "../components/cards/TotalCard.tsx";
 
 const {Title} = Typography
@@ -24,10 +24,11 @@ export function EarningPieChart() {
         const grouped: Record<string, number> = {} // I'm using a Record because it's perfect for grouping things together with a key and value
 
         earningsList.forEach((item: Earning) => {
-            grouped[item.category] = (grouped[item.category] || 0) + item.amount // this first looks if there already is a group with values and then it adds the amount, otherwise it takes 0 as initial
+            // this first looks if there already is a group with values and then it adds the amount, otherwise it takes 0 as initial
+            grouped[item.category] = (grouped[item.category] || 0) + item.amount
         })
 
-        return Object.entries(grouped).map(([category, value]) => ({ // with entries I can use .map() and entries have both key AND value
+        return Object.entries(grouped).map(([category, value]) => ({ // on entries I can use .map() and entries have both key AND value unlike Object
             // turns the grouped object into an array and afterwards makes it into an array of objects with the .map
             category: category,
             value,
@@ -45,9 +46,9 @@ export function EarningPieChart() {
                 data={data}
                 dataKey="value"
                 nameKey="category"
-                cx="50%"
-                cy="50%"
-                outerRadius={150}
+                cx="50%" // x position of the pie
+                cy="50%" // y position of the pie
+                outerRadius={150} //this is basically the size of the Pie INSIDE the PieChart container
                 label={(entry) => entry.name}
                 stroke={'none'}
             />
@@ -69,8 +70,9 @@ function EarningPage() {
         [earningsList]
     )
 
-    const moneyrainTreshold = 1_000_000_000
-    const showMoneyRain = totalEarnings >= moneyrainTreshold && !moneyRainTriggered
+    const moneyRainActivationSum = 1000000000
+    const showMoneyRain = totalEarnings >= moneyRainActivationSum && !moneyRainTriggered
+    // moneyRain shouldn't happen if it already has been triggered
 
     const handleMoneyRainFinished = useCallback(() => {
         dispatch(setMoneyRainTriggered()) //sets the moneyRainTriggered to true in the redux so that the easter egg only happens once

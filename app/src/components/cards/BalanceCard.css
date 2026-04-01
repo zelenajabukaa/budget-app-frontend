@@ -4,10 +4,10 @@
     top: 10rem;
     z-index: 10;
     width: 500px;
-    box-shadow: 0 0 30px 1px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 30px 1px rgba(255, 255, 255, 0.25);/* this is the slight glow around the box */
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1500px) { /* when the screen goes under 1500px, the balance card goes under the total */
     .balance-card {
         position: relative;
         right: 0;

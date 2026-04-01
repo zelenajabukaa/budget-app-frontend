@@ -8,7 +8,7 @@ import {updateExpense} from "../../reduxStore/expensesSlice.ts";
 import {useEffect} from "react";
 import {expenseCategories} from "./AddExpenseForm.tsx";
 import {earningCategories} from "./AddEarningForm.tsx";
-import type {TransactionType} from "../../types.ts";
+import type {TransactionType} from "../../utils/types.ts";
 
 type EditTransactionFormProps = {
     type: TransactionType
@@ -33,11 +33,11 @@ function EditTransactionForm({type, item, open, onClose}: EditTransactionFormPro
     }, [open, item, form])
 
     const handleSubmit = () => {
-        form.validateFields().then((values) => {
+        form.validateFields().then((values) => { //validateFields returns also values
             if (isEarning) {
                 dispatch(updateEarning({id: item.id, ...values})) //the item with the right id gets overwritten
             } else {
-                dispatch(updateExpense({id: item.id, ...values}))
+                dispatch(updateExpense({id: item.id, ...values})) //the payload here is the (unpacked ...) values
             }
             onClose()
         })

@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import type {RootState} from "../../reduxStore/store.ts";
 import {Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import TransactionChartSkeleton from "../skeletons/TransactionChartSkeleton.tsx";
+import * as React from "react";
 
 type TransactionBarChartProps = {
     style?: React.CSSProperties;
