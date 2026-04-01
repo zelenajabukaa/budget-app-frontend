@@ -31,11 +31,11 @@ export const earningsSlice = createSlice({
 
         removeEarning: (state, action: PayloadAction<string>) => {
             state.list = state.list.filter(item => item.id !== action.payload)
-        },//searches for the right id and removes it from the list Array
+        },//takes all the items in the list other than the item that should get deleted and saves only these in the list
 
         updateEarning: (state, action: PayloadAction<Earning>) => {
             const index = state.list.findIndex(item => item.id === action.payload.id)
-            if (index !== -1) {
+            if (index !== -1) {// -1 is like the signal word for: i haven't found anything that matches
                 state.list[index] = action.payload
             }
         },//searches for the right id and only if the id exists it updates the values and it STAYS at the same place in the array

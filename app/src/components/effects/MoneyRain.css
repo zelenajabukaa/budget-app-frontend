@@ -16,7 +16,7 @@
 
 @keyframes fall {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg);/* this is just the position and rotation in the beginning */
         opacity: 1;
     }
     100% {
